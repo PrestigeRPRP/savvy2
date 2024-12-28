@@ -1,0 +1,166 @@
+<html>
+  <meta charset="UTF-8" /><meta
+    content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5"
+    name="viewport"
+  /><meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  /><link
+    href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <link
+    href="https://hanyauntukmu.likeadream.repl.co/style.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <script src="https://hanyauntukmu.likeadream.repl.co/script.js"></script>
+  <script src="index.js"></script>
+  <head> 
+    <title> To Savvy :D</title>
+  </head>
+  <style>
+    body {
+      background-image: url(image/download.gif);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position-y: bottom;
+    }
+    body::before {
+      content: "" !important;
+      color: transparent !important;
+    }
+  </style>
+  <body>
+    <div id="bodyblur">
+  
+    </div>
+
+    <div id="Content">
+     
+      <div>
+        <blockquote>
+          <p id="text"></p>
+          <p id="text2"></p>
+        </blockquote>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function play() {
+        var audio = new Audio(
+          "https://sndup.net/tqdx/d"
+        );
+        audio.play();
+      }
+    
+      const swals = Swal.mixin({
+        allowOutsideClick: false,
+        cancelButtonColor: "#FF0040",
+      });
+      const swalsy = Swal.mixin({
+        confirmButtonText: "Iya",
+        allowOutsideClick: false,
+      });
+      const swalst = Swal.mixin({
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+      });
+    
+      let inactivityTimer;
+      const inactivityTime = 5000; // 5 seconds
+      const audio = new Audio('Marilag.mp3'); // Replace with your MP3 file path
+      audio.volume = 0.1; // Set volume (0.0 to 1.0)
+    
+      function resetTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(() => {
+          // Automatically click the confirm button after 5 seconds of inactivity
+          confirmAction();
+        }, inactivityTime);
+      }
+    
+      function confirmAction() {
+        // Simulate clicking the confirm button
+        Swal.close();
+        playAudio();
+        kuis();
+      }
+    
+      async function showAlert() {
+        const swalInstance = Swal.fire({
+          title: `Savvy :D`,
+          imageUrl: "image/savvy.png",
+          imageWidth: 390,
+          imageHeight: 380,
+          confirmButtonText: "Welcome Back!",
+          allowOutsideClick: false,
+          showCancelButton: false,
+          didOpen: () => {
+            // Start the timer when the dialog opens
+            resetTimer();
+          },
+          willClose: () => {
+            // Clear the timer when the dialog closes
+            clearTimeout(inactivityTimer);
+          }
+        });
+    
+        const { isConfirmed } = await swalInstance;
+    
+        if (isConfirmed) {
+          clearTimeout(inactivityTimer); // Clear the timer if the user clicks the button
+          playAudio();
+          kuis();
+        }
+      }
+    
+      function playAudio() {
+        audio.play();
+      }
+    
+      async function kuis() {
+        await swalst.fire({
+          title: "I’ve missed hearing your voice",
+          imageUrl: "image/peach-goma.gif",
+          imageWidth: 120,
+          imageHeight: 120,
+        });
+        await swalst.fire({
+          title: "It always brings so much light and warmth 💗",
+          imageUrl: "image/tepukbadan.gif",
+          imageWidth: 120,
+          imageHeight: 120,
+        });
+        await swalst.fire({
+          title: "Take a moment to breathe, rest, and recharge",
+          imageUrl: "image/gigit.gif",
+          imageWidth: 120,
+          imageHeight: 120,
+        });
+        await swalst.fire({
+          title: "You deserve all the time you need.",
+          imageUrl: "image/bear-cute-1.gif",
+          imageWidth: 120,
+          imageHeight: 120,
+        });
+        text = "You will always be my sweetheart ";
+        emotnama = "&#10084;";
+        text2 = "I hope to hear your voice again soon! 💕";
+        showDiv();
+      }
+    
+      function mulaitanya() {
+        kuis();
+      }
+    
+      // Call the showAlert function to display the SweetAlert dialog
+      showAlert();
+    </script>
+  </body>
+</html>
